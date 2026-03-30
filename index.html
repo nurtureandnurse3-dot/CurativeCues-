@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Curative Cues — Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --teal:  #0a7e8c;
+    --teal2: #12a8ba;
+    --mint:  #d4f0f0;
+    --gold:  #e8a020;
+    --gold2: #ffc84a;
+    --ink:   #0e1a1f;
+    --grey:  #6b7c82;
+    --cream: #faf7f2;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 20px 60px;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* background glow blobs */
+  body::before {
+    content: '';
+    position: fixed; top: -20vh; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(10,126,140,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  body::after {
+    content: '';
+    position: fixed; bottom: -10vh; right: -10vw;
+    width: 350px; height: 350px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,160,32,0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card {
+    width: 100%; max-width: 420px;
+    position: relative; z-index: 1;
+  }
+
+  /* ── PROFILE ── */
+  .profile {
+    text-align: center;
+    margin-bottom: 32px;
+    animation: fadeDown .6s ease both;
+  }
+
+  .avatar {
+    width: 88px; height: 88px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal) 0%, #064c57 100%);
+    margin: 0 auto 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.4rem;
+    border: 3px solid rgba(255,255,255,0.08);
+    box-shadow: 0 0 0 6px rgba(10,126,140,0.12);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 6px rgba(10,126,140,0.12); }
+    50%      { box-shadow: 0 0 0 12px rgba(10,126,140,0.06); }
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900;
+    color: var(--white); letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .brand-name span { color: var(--gold2); }
+
+  .handle {
+    font-size: 0.82rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.04em; margin-bottom: 12px;
+  }
+
+  .bio {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+    max-width: 300px; margin: 0 auto 16px;
+  }
+
+  .badges {
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.6);
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 4px 12px; border-radius: 50px;
+  }
+  .badge.teal { background: rgba(10,126,140,0.2); border-color: rgba(10,126,140,0.4); color: var(--teal2); }
+  .badge.gold { background: rgba(232,160,32,0.15); border-color: rgba(232,160,32,0.35); color: var(--gold2); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+    animation: fadeUp .5s .2s ease both;
+  }
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .divider span {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.25);
+  }
+
+  /* ── LINKS ── */
+  .links { display: flex; flex-direction: column; gap: 12px; }
+
+  .link-btn {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px; border-radius: 16px;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: transform .2s, box-shadow .2s, border-color .2s, background .2s;
+    position: relative; overflow: hidden;
+    animation: fadeUp .5s ease both;
+  }
+
+  .link-btn::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0.03);
+    opacity: 0; transition: opacity .2s;
+  }
+  .link-btn:hover::before { opacity: 1; }
+  .link-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.14);
+  }
+  .link-btn:active { transform: translateY(-1px); }
+
+  /* variants */
+  .link-btn.primary {
+    background: linear-gradient(135deg, var(--teal) 0%, #0a6570 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(10,126,140,0.35);
+  }
+  .link-btn.primary:hover { box-shadow: 0 10px 32px rgba(10,126,140,0.45); }
+
+  .link-btn.gold-btn {
+    background: linear-gradient(135deg, #c47a10 0%, var(--gold) 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(232,160,32,0.25);
+  }
+  .link-btn.gold-btn:hover { box-shadow: 0 10px 32px rgba(232,160,32,0.35); }
+
+  .link-btn.whatsapp {
+    background: linear-gradient(135deg, #128c47 0%, #25D366 100%);
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.25);
+  }
+  .link-btn.whatsapp:hover { box-shadow: 0 10px 32px rgba(37,211,102,0.35); }
+
+  .link-btn.dark {
+    background: rgba(255,255,255,0.05);
+  }
+
+  .link-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem; flex-shrink: 0;
+  }
+
+  .link-text { flex: 1; }
+  .link-title {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--white); display: block; margin-bottom: 2px;
+  }
+  .link-sub {
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .link-arrow {
+    color: rgba(255,255,255,0.4); font-size: 1rem;
+    transition: transform .2s;
+  }
+  .link-btn:hover .link-arrow { transform: translateX(4px); color: rgba(255,255,255,0.7); }
+
+  /* NEW badge on a link */
+  .new-tag {
+    position: absolute; top: 10px; right: 44px;
+    background: var(--gold2); color: var(--ink);
+    font-size: 0.62rem; font-weight: 800;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 50px;
+  }
+
+  /* ── SECTION LABEL ── */
+  .sec-label {
+    font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    margin: 24px 0 10px 4px;
+    animation: fadeUp .5s .15s ease both;
+  }
+
+  /* ── SOCIALS ROW ── */
+  .socials-row {
+    display: flex; justify-content: center; gap: 14px;
+    margin-top: 32px;
+    animation: fadeUp .5s .5s ease both;
+  }
+  .social-pill {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50px; padding: 8px 16px;
+    text-decoration: none; color: rgba(255,255,255,0.5);
+    font-size: 0.8rem; font-weight: 500;
+    transition: all .2s;
+  }
+  .social-pill:hover {
+    background: rgba(255,255,255,0.10);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+  }
+  .social-pill .si { font-size: 1rem; }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    text-align: center; margin-top: 36px;
+    font-size: 0.75rem; color: rgba(255,255,255,0.2);
+    animation: fadeUp .5s .6s ease both;
+  }
+  .page-footer span { color: var(--teal2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* stagger link animations */
+  .link-btn:nth-child(1) { animation-delay: .20s; }
+  .link-btn:nth-child(2) { animation-delay: .28s; }
+  .link-btn:nth-child(3) { animation-delay: .36s; }
+  .link-btn:nth-child(4) { animation-delay: .44s; }
+  .link-btn:nth-child(5) { animation-delay: .52s; }
+  .link-btn:nth-child(6) { animation-delay: .60s; }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <!-- PROFILE -->
+  <div class="profile">
+    <div class="avatar">🩺</div>
+    <div class="brand-name">Curative <span>Cues</span></div>
+    <div class="handle">@curativecues</div>
+    <p class="bio">Nursing study resources for Zambian student nurses — MCQs, drug cards, study guides &amp; more. By a Registered Nurse. 🇿🇲</p>
+    <div class="badges">
+      <span class="badge teal">Registered Nurse</span>
+      <span class="badge gold">HIV/TB · ART · PMTCT</span>
+      <span class="badge">Zambia</span>
+    </div>
+  </div>
+
+  <div class="divider"><span>Resources</span></div>
+
+  <!-- LINKS -->
+  <div class="links">
+
+    <a href="#" class="link-btn primary">
+      <div class="link-icon">📚</div>
+      <div class="link-text">
+        <span class="link-title">Browse All Resources</span>
+        <span class="link-sub">MCQ papers, study notes, drug cards</span>
+      </div>
+      <span class="link-arrow">→</span>
+      <span class="new-tag">New</span>
+    </a>
+
+    <a href="#" class="link-btn gold-btn">
+      <div class="link-icon">📝</div>
+      <div class="link-text">
+        <span class="link-title">Pharmacology MCQ Paper Vol.1</span>
+        <span class="link-sub">20 questions · Year 1 &amp; 2 · K45</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="#" class="link-btn whatsapp">
+      <div class="link-icon">💬</div>
+      <div class="link-text">
+        <span class="link-title">Join WhatsApp Channel</span>
+        <span class="link-sub">Free daily tips · Early access · Community</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+  </div>
+
+  <div class="sec-label">Follow for Free Tips</div>
+
+  <div class="links">
+    <a href="#" class="link-btn dark">
+      <div class="link-icon">🎵</div>
+      <div class="link-text">
+        <span class="link-title">TikTok</span>
+        <span class="link-sub">Daily nursing tips · 20K followers</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="#" class="link-btn dark">
+      <div class="link-icon">📸</div>
+      <div class="link-text">
+        <span class="link-title">Instagram</span>
+        <span class="link-sub">Study reels · Clinical content</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a href="#" class="link-btn dark">
+      <div class="link-icon">👥</div>
+      <div class="link-text">
+        <span class="link-title">Facebook Page</span>
+        <span class="link-sub">Longer posts · Student community</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- SOCIALS ROW -->
+  <div class="socials-row">
+    <a href="#" class="social-pill"><span class="si">🎵</span> TikTok</a>
+    <a href="#" class="social-pill"><span class="si">📸</span> IG</a>
+    <a href="#" class="social-pill"><span class="si">👥</span> FB</a>
+    <a href="#" class="social-pill"><span class="si">💬</span> WA</a>
+  </div>
+
+  <div class="page-footer">
+    © 2025 <span>Curative Cues</span> · Zambia · Made with 🩺
+  </div>
+
+</div>
+</body>
+</html>
